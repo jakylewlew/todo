@@ -7,19 +7,20 @@ import os
 
 todo_file = open("tasklist.txt", "r+")
  
-todolist = todo_file.readlines()
+read_list = todo_file.readlines()
 try:
-    todolist = todolist[0].split(',')
+    read_list = read_list[0].split(',')
 except(IndexError):        
     print("")
-print(todolist)
-todolist.pop(len(todolist)-1)
+
+read_list.pop(len(read_list)-1)
+todolist = []
 i = 0
-while(i != len(todolist)-3):
+while(i != len(read_list)):
     module_task = []
-    module_task.append(todolist[i])
-    module_task.append(todolist[i+1])
-    module_task.append(todolist[i+2])
+    module_task.append(read_list[i])
+    module_task.append(read_list[i+1])
+    module_task.append(read_list[i+2])
     todolist.append(module_task)
     i = i + 3  
 #     todo_file.close()
@@ -29,6 +30,7 @@ while(i != len(todolist)-3):
 #     todolist = []
 
 todo_file.close()
+print(todolist)
 
 
 def new_task():
@@ -42,8 +44,9 @@ def new_task():
     write_file()
 def mark_task_done():
     refresh()
-    module = (3 * selection)+2
-    todolist[module] = 0
+    selection = input("Select")
+    module = todolist[int(selection)]
+    module[2] = 0
     write_file()
 def refresh():
     i = 0
@@ -62,20 +65,23 @@ def delete_task():
     
 def edit_task():
     i = 0
-    for module in todolist:
+    for module in todolist: #ADDS THE INDEX OF THE ARRAY TO THE BEGINNING
         print(str(i)+ " " +str(module))  
         i = i + 1  
-    inp = input("item number")
-    print(todolist[inp][0])
+    inp = int(input("item number"))
+    item = (todolist[inp])
+    
+    print(str(item) + " : Selected....")
+    print(item[0]+ " : Change Task?")
     inp = input("Y/N")
     if inp == "Y":
         inp = input("Task")
-        todolist[inp][0] = inp
-    print(todolist[inp][1])
+        item[0] = inp
+    print(item[1]+" : Change Date?")
     inp = input("Y/N")
     if inp == "Y":
-        inp = input("date")
-        todolist[inp][1] = inp      
+        inp = input("Date?")
+        item[1] = inp      
     write_file()  
 def write_file():
     todo_file = open("tasklist.txt", 'w+')
@@ -98,7 +104,7 @@ while inp != 'q':
         new_task()
     if inp == '2':
         
-        mark_task_done(inp)
+        mark_task_done()
     if inp == '3':
         refresh()
     if inp == '4':
