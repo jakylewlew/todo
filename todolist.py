@@ -1,6 +1,6 @@
 
 import os
-os.system("git pull")
+
 
 todo_file = open("tasklist.txt", "r+") 
 read_list = todo_file.readlines()
@@ -13,7 +13,7 @@ read_list.pop(len(read_list)-1)
 todolist = []
 i = 0
 while(i != len(read_list)):
-    module_task = []
+    module_task = []q
     module_task.append(read_list[i])
     module_task.append(read_list[i+1])
     module_task.append(read_list[i+2])
@@ -72,12 +72,12 @@ def edit_task():
     inp = input("Y/N")
     if inp == "Y":
         inp = input("Task")
-        item[0] = inp
+        item[0] = "Task: " + inp
     print(item[1]+" : Change Date?")
     inp = input("Y/N")
     if inp == "Y":
         inp = input("Date?")
-        item[1] = inp      
+        item[1] = "duedate " + inp      
     write_file()  
 def write_file():
     todo_file = open("tasklist.txt", 'w+')
