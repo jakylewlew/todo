@@ -1,16 +1,12 @@
-'''
-Created on Jan 31, 2019
- 
-@author: jlewis
-'''
-import os
 
-todo_file = open("tasklist.txt", "r+")
- 
+import os
+os.system("git pull")
+
+todo_file = open("tasklist.txt", "r+") 
 read_list = todo_file.readlines()
 try:
     read_list = read_list[0].split(',')
-except(IndexError):        
+except(IndexError):          
     print("")
 
 read_list.pop(len(read_list)-1)
@@ -90,15 +86,19 @@ def write_file():
             todo_file.write(str(obj)+',')
             print(obj)
     todo_file.close()
+def print_pretty():
+    for item in todolist:
+        print('{0:30s} : {1:10s}'.format(item[0], item[1]))
 inp = 0
 while inp != 'q': 
     os.system("clear") 
-    refresh()  
+#     refresh() 
+    print_pretty() 
     print("new item:  1")
     print("check off: 2")
     print("refresh:   3")
     print("delete:    4")
-    print("Edit :     5")
+    print("Edit :     5") 
     inp = input("")
     if inp == '1':
         new_task()
