@@ -100,16 +100,16 @@ while inp != 'q':
     print("delete:    4")
     print("Edit :     5") 
     inp = input("")
-    if inp == '1':
+    if inp == '1' or inp == 'n':
         new_task()
-    if inp == '2':
+    if inp == '2' or inp == 'c':
         
         mark_task_done()
-    if inp == '3':
+    if inp == '3' or inp == 'r':
         refresh()
-    if inp == '4':
+    if inp == '4' or inp == 'd':
         delete_task()
-    if inp == '5':
+    if inp == '5' or inp == 'e':
         edit_task()
 
 
