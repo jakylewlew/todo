@@ -1,1 +1,1 @@
-This is a very basic python task program for school that i made very quickly. Not refined or made to be pretty just made to work
+Run this from my bashrc so that every time I open a terminal I can always see my agenda and what task to start next
